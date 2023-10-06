@@ -1,0 +1,94 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ReadPDFText&Sequence_8",
+        "totalFinal&Sequence_1",
+        "identificadorDocumento&Sequence_1",
+        "documento&Sequence_1",
+        "fechaCaducidad&Sequence_1",
+        "fechaFinal&Sequence_1",
+        "fechaEmision&Sequence_1",
+        "finalResultado&Sequence_1",
+        "ReadPDFText&Sequence_1",
+        "file&Sequence_1",
+        "Español&Sequence_1",
+        "strExtract&Sequence_1",
+        "ImgInvoice&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "../../../Desktop/tesisrpa/uipath/ocr_and_browser_error.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ImgInvoice&Sequence_1",
+        "strExtract&Sequence_1",
+        "Español&Sequence_1",
+        "file&Sequence_1",
+        "ReadPDFText&Sequence_1",
+        "finalResultado&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main (Guardado automático).xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ImgInvoice&Sequence_1",
+        "strExtract&Sequence_1",
+        "Español&Sequence_1",
+        "file&Sequence_1",
+        "ReadPDFText&Sequence_1",
+        "finalResultado&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ExampleRecorrido.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "../../../Desktop/tesisrpa/FinalProyecto.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ImgInvoice&Sequence_1",
+        "strExtract&Sequence_1",
+        "Español&Sequence_1",
+        "file&Sequence_1",
+        "ReadPDFText&Sequence_1",
+        "finalResultado&Sequence_1",
+        "fechaEmision&Sequence_1",
+        "fechaFinal&Sequence_1",
+        "fechaCaducidad&Sequence_1",
+        "documento&Sequence_1",
+        "identificadorDocumento&Sequence_1",
+        "totalFinal&Sequence_1",
+        "ReadPDFText&Sequence_8"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
