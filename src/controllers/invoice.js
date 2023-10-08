@@ -25,7 +25,8 @@ app.get('/invoice', async (req, res) => {
         dateExpiration:JSON.parse(JSON.stringify(item.dateExpiration)).split("T")[0],
       }
     })
-    res.status(200).json({data:invoicesUpdate})
+    console.log(invoicesUpdate)
+    return res.status(200).json({data:invoicesUpdate})
   })
 
 app.delete('/invoice/:id', async (req, res) => {
