@@ -17,6 +17,7 @@ app.use(cors()) //need define client url
 app.use(morgan("dev"));
 
 app.use("/api/",require("./controllers/invoice"))
+app.use("/api/",require("./controllers/user"))
 
 const port =  5000;
 if(process.env.NODE_ENV == 'production'){

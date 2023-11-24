@@ -1,14 +1,14 @@
-import { PrismaClient } from "@prisma/client"
+const {PrismaClient} = require("@prisma/client")
+const bcrypt = require("bcrypt")
 
 const prisma = new PrismaClient()
 async function main() {
-	await prisma.invoice.create({
+
+	const salt = bcrypt.genSaltSync(10);
+	await prisma.user.create({
 		data: {
-			customer: "jose",
-            dateEmition:new Date(),
-            dateExpiration:new Date(),
-            statePayment:"CONTADO",
-            totalPayment:1000,
+			email: "admin@hotmail.com",
+            password: bcrypt.hashSync("password", salt),
 		},
 	})
 	

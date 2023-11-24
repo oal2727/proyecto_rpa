@@ -10,16 +10,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+model User {
+  id             Int        @id @default(autoincrement())
+  email          String
+  password       String
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @default(now()) @updatedAt
+
+  @@map("user")
+}
+
 model Invoice {
   id             Int        @id @default(autoincrement())
   customer       String
   document       String
+  ruc            String
+
   dateEmition    DateTime   @db.Date
   dateExpiration DateTime   @db.Date
   statePayment   String
   totalPayment   Decimal    @default(0) @db.Decimal(10, 2)
+  totalPending   Decimal   @default(0) @db.Decimal(10, 2)
+
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @default(now()) @updatedAt
 
   @@map("invoice")
+}
+
+model Payment {
+  id             Int        @id @default(autoincrement())
+  totalPayment   Decimal    @default(0) @db.Decimal(10, 2)
+  datePayment    DateTime?  @db.Date
+  invoiceId      Int
+  typePayment    String 
+  
+
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @default(now()) @updatedAt
+
+  @@map("payment")
 }
