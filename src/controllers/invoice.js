@@ -31,8 +31,14 @@ app.get("/paymentList/:id",async(req,res)=>{
       invoiceId:parseInt(id)
     }
   })
-  console.log(payments)
-  return res.status(200).json({data:payments})
+  const updatePayments = payments.map((item)=>{
+    return{
+      ...item,
+      datePayment:JSON.parse(JSON.stringify(item.datePayment)).split("T")[0]
+    }
+  })
+
+  return res.status(200).json({data:updatePayments})
 })
 
 app.post("/dashboard_kpi",async(req,res)=>{
@@ -67,6 +73,27 @@ app.post("/dashboard_kpi",async(req,res)=>{
   return res.status(200).json(param)
 })
 
+app.get("/detalle_controller",async(req,res)=>{
+  const prismaData = await prisma.invoice.findMany({
+    where: {
+      statePayment: "PAGADO",
+    },
+  })
+  prismaData.forEach(async(element)=>{
+    await prisma.invoice.update({
+      where: {
+        id: parseInt(element.id),
+      },
+      data:{
+        totalPending:element.totalPayment,
+        statePayment:"PENDIENTE"
+      }
+    })
+  })
+  return res.status(200).json({data:"update"})
+
+})
+
 app.post("/updateRecords",async(req,res)=>{
   const {data,payments} = req.body
   data.forEach(async(element)=>{
@@ -85,11 +112,13 @@ app.post("/updateRecords",async(req,res)=>{
     await prisma.payment.create({
       data:{
         invoiceId:item.invoiceId,
+        datePayment:item.FechaDePago,
         totalPayment:item.MontoPagado,
         typePayment: item.FormaDePago
       }
     })
   })
+  return res.status(200).json({data:"update success"})
 })
 
 app.get('/invoice', async (req, res) => {
@@ -97,7 +126,7 @@ app.get('/invoice', async (req, res) => {
     const invoicesUpdate = invoices.map((item)=>{
       return{
         ...item,
-        payment:parseFloat(item.totalPayment) - parseFloat (item.totalPending),
+        payment:parseFloat (item.totalPending),
         dateEmition:JSON.parse(JSON.stringify(item.dateEmition)).split("T")[0],
         dateExpiration:JSON.parse(JSON.stringify(item.dateExpiration)).split("T")[0],
       }
@@ -168,6 +197,7 @@ app.post('/invoice', async (req, res) => {
         dateEmition:new Date(dateEmition),
         dateExpiration:new Date(dateExpiration),
         document,
+        totalPending:parseFloat(totalPayment.replace(",","")),
         statePayment:"CREDITO",
         totalPayment:parseFloat(totalPayment.replace(",",""))
       },
